@@ -14,23 +14,23 @@ INICIO:
     CALL DELAY_2S 
     SJMP INICIO   ; Recomeça o ciclo
 
-;  de atraso de 5 segundos
+;Sub-rotina  de atraso 1
 DELAY_5S:
-    MOV R3, #50   ; Atraso aproximado de 5 segundos
+    MOV R3, #50
 DELAY_LOOP_5S: 
-    CALL DELAY_100MS  ; Chama o atraso de 100 milissegundos
+    CALL DELAY_100MS
     DJNZ R3, DELAY_LOOP_5S
     RET
 
-;Sub-rotina de atraso
+;Sub-rotina de atraso 2
 DELAY_2S:
-    MOV R3, #20   ; Atraso aproximado de 2 segundos
+    MOV R3, #20
 DELAY_LOOP_2S: 
-    CALL DELAY_100MS  ; Chama o atraso de 100 milissegundos
+    CALL DELAY_100MS
     DJNZ R3, DELAY_LOOP_2S
     RET
 
-;Sub-rotina de atraso
+;Sub-rotina de atraso 3
 DELAY_100MS:
     MOV R2, #250
 DELAY_LOOP_100MS:
