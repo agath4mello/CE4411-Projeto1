@@ -1,41 +1,47 @@
 ORG 0000H
+    ; Inicio - começa com vermelho
     MOV P2, #04H
+    CALL EXIBIR_MENSAGEM
 
-INICIO: 
-    ;Luz vermelha por 5 segundos
-    CALL DELAY_5S  
-    MOV P2, #02H 
-    ;Luz amarela por 2 segundos
-    CALL DELAY_2S 
-    MOV P2, #01H
-    ;Luz verde por 5 segundos
-    CALL DELAY_5S 
-    MOV P2, #02H
-    CALL DELAY_2S 
-    SJMP INICIO  
+LOOP:
+    ; Luz vermelha por 5 segundos
+    CALL DELAY_5S
+    
+    ; Transição para o amarelo (avisar pedestre para aguardar)
+    MOV P2, #02H ; LED amarelo ligado (P2.1)
+    CALL EXIBIR_AGUARDE
+    CALL DELAY_3S
+    
+    ; Libera pedestres - muda para o verde
+    MOV P2, #01H ; LED verde ligado (P2.0)
+    CALL EXIBIR_PODE_PASSAR
+    CALL DELAY_10S
 
+    ; Retorna para o vermelho e reinicia o loop
+    MOV P2, #04H  ; LED vermelho ligado (P2.2)
+    CALL EXIBIR_MENSAGEM
+    SJMP LOOP
 
+; Sub-rotinas de exibição
+EXIBIR_MENSAGEM:
+    ; Envia "Carro passando" ao LCD
+    ; terminar de desenvolver o código
+    RET
+EXIBIR_AGUARDE:
+    ; Envia "Aguarde" ao LCD
+    ; terminar de desenvolver o código
+    RET
+EXIBIR_PODE_PASSAR:
+    ; Envia "Pode atravessar" ao LCD
+    ; terminar de desenvolver o código
+    RET
+
+; Rotinas de delay
 DELAY_5S:
-    MOV R3, #50
-DELAY_LOOP_5S: 
-    CALL DELAY_100MS
-    DJNZ R3, DELAY_LOOP_5S
     RET
-
-
-DELAY_2S:
-    MOV R3, #20
-DELAY_LOOP_2S: 
-    CALL DELAY_100MS
-    DJNZ R3, DELAY_LOOP_2S
+DELAY_3S:
     RET
-
-
-DELAY_100MS:
-    MOV R2, #250
-DELAY_LOOP_100MS:
-    NOP
-    DJNZ R2, DELAY_LOOP_100MS
+DELAY_10S:
     RET
 
 END
