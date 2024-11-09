@@ -10,12 +10,12 @@ LOOP:
     MOV P2, #12H            ;Liga LED amarelo carro (P2.1)
     CALL DELAY_2S           ;Espera 2 segundos
     
-    ; Libera pedestres - muda para o verde do carro e verde do pedestre
-    MOV P2, #09H            ;Liga LED verde carro (P2.0) e LED verde pedestre (P2.3)
+    ; Libera pedestres - muda para o vermelho do carro e verde do pedestre
+    MOV P2, #09H            ;Liga LED vermelho carro (P2.0) e LED verde pedestre (P2.3)
     CALL DELAY_8S           ;Espera 8 segundos para atravessar
 
-    ; Retorna para o vermelho do carro e acende o vermelho do pedestre
-    MOV P2, #14H            ;Liga LED vermelho carro (P2.2) e LED vermelho pedestre (P2.4)
+    ; Retorna para o verde do carro e acende o vermelho do pedestre
+    MOV P2, #14H            ;Liga LED verde carro (P2.2) e LED vermelho pedestre (P2.4)
     SJMP LOOP               ;Reinicia o ciclo
 
 ; Rotinas de delay
