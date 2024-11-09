@@ -1,4 +1,4 @@
-#Sistema de Controle de Sinalização de Trânsito
+Sistema de Controle de Sinalização de Trânsito
 Este código implementa um sistema simples de controle de semáforo para veículos e pedestres. Utilizando um microcontrolador (presumivelmente 8051 ou similar), ele controla as luzes de semáforo de um cruzamento, alternando entre as fases de sinalização para veículos e pedestres.
 
 Descrição
